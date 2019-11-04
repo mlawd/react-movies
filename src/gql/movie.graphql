@@ -1,0 +1,10 @@
+#import "./basic-movie-fragment.graphql"
+
+query Movie($id: Int!) {
+  movie {
+    single(id: $id) {
+      ...BasicMovieDetails
+      tagline
+    }
+  }
+}

@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FunctionComponent } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import Grid from "@material-ui/core/Grid";
+import { Container } from "@material-ui/core";
 
-const App: React.FC = () => {
+import { Movies } from "./views/Movies";
+import { Movie } from "./views/Movie";
+import { MovieAppBar } from "./components/AppBar";
+
+const App: FunctionComponent = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <MovieAppBar />
+        <Container style={{ padding: 20 }}>
+          <Grid
+            container
+            spacing={4}
+            justify="center"
+            alignItems="center"
+            style={{ minHeight: "400px" }}
+          >
+            <Switch>
+              <Route path="/movies/:query">
+                <Movies />
+              </Route>
+              <Route path="/movie/:id">
+                <Movie />
+              </Route>
+            </Switch>
+          </Grid>
+        </Container>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,6 @@
+fragment BasicMovieDetails on MovieType {
+  id
+  voteAverage
+  title
+  posterPath
+}

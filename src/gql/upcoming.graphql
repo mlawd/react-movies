@@ -1,0 +1,11 @@
+#import './basic-movie-fragment.graphql'
+
+{
+  movie {
+    upcoming {
+      results {
+        ...BasicMovieDetails
+      }
+    }
+  }
+}
